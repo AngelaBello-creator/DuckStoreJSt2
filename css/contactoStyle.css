@@ -201,10 +201,9 @@ footer {
 
 
 @media (min-width: 768px) {
-    /* oculta burger y muestra navbar */
+   
     .burger { display: none; }
     .navbar { display: flex; }
-    /* tagline se va de la cabecera (estaba para móvil) */
     .tagline { display: none; }
 }
 
