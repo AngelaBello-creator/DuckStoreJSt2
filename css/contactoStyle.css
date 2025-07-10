@@ -1,160 +1,248 @@
+
+:root {
+    --duck-green: #B8D576; 
+    --duck-yellow: #FFD95F;
+    --offwhite: #ffffff;    
+}
+
+* { box-sizing: border-box; }
+
 body {
     margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--offwhite);
     cursor: url("../img/icons/patocur.ico"), auto;
 }
 
-header, footer {
-    background-color: #ffd95f;
-}
-header{
-    height: 119px;
-}
-main{
-    background-color: bisque;
-    height: 724px;
-}
-footer {
-    height: 181px;
-}
-/*----------------------------------------------------*/
-/* H  E  A  D  E  R */
-/*----------------------------------------------------*/ 
 
-.header{
-    display: flex;
-    justify-content: space-between;
-}
-/*header LEFT*/
-.headerLeft{
-    display: flex;
-    align-items: center;
-}
-.duckLogo {
-    width: 91px;
-    height: 91px;
-    border-radius: 50%;
-    
-    margin-left: 42px;
-    
-}
-
-/*HEADER CENTER*/
-/*
-ul{
-    list-style: none;
-    display: flex;
-    font-size:30px;
-    margin: 45px 0;
-}
-ul li{
-    margin-right: 50px;    
-}
-ul li a{
-    text-decoration: none;
-}
-*/
-.navbar{
-    display: flex;
-    align-items: center;
-}
-.headerNav{
-    color: black;
-    margin-right: 2px;
-    text-decoration: none;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bolder;
-    margin: 0 150px;
-    letter-spacing: 2px;
-}
-.headerNav:hover {
-    text-decoration: underline;
-    font-size: 25px;
-    transition-duration: 1s;
-}
-
-
-/*HEADER RIGHT*/
-.navRight{
-    display: flex;
-    align-items: center;
-}
-.carrito {
-    width: 55px;
-    height: 55px;
-    margin-right: 40px;
-}
-.usuario {
-    width: 50px;
-    height: 50px;
-    margin-right: 50px;
-}
-
-.carrito:hover, .usuario:hover{
-    width: 65px;
-    height: 65px;
-}
-
-
-/*----------------------------------------------------*/
-/* F  O  O  T  E  R */
-/*----------------------------------------------------*/
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-}
-
-/*footer left*/
-.companyInfo {
-    display: flex;
-    align-items: center;
-    margin-top: 45px;
-}
-.duckLogoFooter{
-    margin-left: 50px;
-}
-.companyData {
+header {
+    background: var(--duck-green);  
+    padding: 0 1rem;
+    min-height: 119px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
+    justify-content: center;
+    position: relative; 
+    gap: .5rem;
 }
-.companyData p{
-    /*
-    margin-bottom: 1px;
-    */
-    margin: 0;
-    margin-left: 30px;
+
+.headerLeft { 
+    display: flex;
+    align-items: center;
+}
+
+.duckLogo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.tagline {
+    margin: 0 0 .5rem;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+
+.navbar {
+    display: none;
+    gap: 2.5rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 700;
+    font-size: 15px;
+    position: relative;
+}
+
+.navbar a::after { 
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transition: width .25s ease;
+}
+.navbar a:hover::after {
+    width: 100%;
+}
+
+
+.navRight {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.carrito, .usuario {
+    width: 32px;
+    height: 32px;
+    transition: transform .2s ease;
+}
+.carrito:hover, .usuario:hover { transform: scale(1.15); }
+
+
+.burger {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    width: 26px;
+    height: 20px;
+    background: url("../img/icons/burger.svg") center/contain no-repeat;
+    border: none;
+    cursor: pointer;
+}
+
+
+main {
+    background: var(--offwhite);
+    min-height: 724px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem 3rem;
+}
+
+
+.contactCard {
+    width: 90%;
+    max-width: 420px;
+    background: url("../img/ducks-pattern.png") center/cover, rgba(255,255,255,.9);
+    background-blend-mode: lighten;
+    padding: 2rem 1.5rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 0 12px rgba(0,0,0,.12);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contactCard input,
+.contactCard textarea {
+    width: 100%;
+    padding: .6rem 1rem;
+    border-radius: 1rem;
+    border: 2px solid var(--duck-green);
+    font-family: inherit;
+}
+
+.contactCard button {
+    align-self: center;
+    padding: .4rem 1.5rem;
+    border: none;
+    border-radius: 1rem;
+    background: var(--duck-yellow);
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s ease;
+}
+.contactCard button:hover { transform: scale(1.05); }
+
+
+footer {
+    background: var(--duck-green);  /* móvil = verde */
+    padding: 3rem 1rem 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+.companyInfo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.duckLogoFooter {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.companyData {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
     line-height: 1.4;
 }
 
-/*footer center*/
-.footerCenter{
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-}
-.footerCenter p{
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    letter-spacing: 1px;
+
+.footerCenter {
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
 }
 
 
-/*footer right*/
 .socialNet {
-    margin: 20px 50px 0 0;
     display: flex;
-    align-items: center;
+    gap: 2rem;
 }
-.socialIcono {
-    width: 50px;
-    height: 50px;
-    margin-left: 40px;
 
+.socialIcono {
+    width: 38px;
+    height: 38px;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,.15));
+    transition: transform .2s ease;
 }
-/*----------------------------------------------------*/
-/*  DESDE AQUI MAIN  */
-/*----------------------------------------------------*/
+.socialIcono:hover { transform: scale(1.15); }
+
+
+
+
+@media (min-width: 768px) {
+    /* oculta burger y muestra navbar */
+    .burger { display: none; }
+    .navbar { display: flex; }
+    /* tagline se va de la cabecera (estaba para móvil) */
+    .tagline { display: none; }
+}
+
+
+@media (min-width: 992px) {
+
+    header {
+        background: var(--duck-yellow); 
+        padding: 0 2.5rem;
+        min-height: 90px;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+    }
+    .duckLogo { width: 90px; height: 90px; }
+    .navbar { justify-self: center; gap: 3rem; }
+    .navRight { justify-self: end; gap: 2rem; }
+
+   
+    footer {
+        background: var(--duck-yellow);
+        padding: 2.5rem 2.5rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .companyInfo { flex: 0 0 auto; }
+    .footerCenter { margin: 0 auto; }
+    .socialNet { flex: 0 0 auto; }
+
+    .socialIcono { width: 32px; height: 32px; }
+
+    .contactCard { max-width: 420px; }
+}
+
+@media (min-width: 1200px) {
+    header { padding: 0 4rem; }
+    footer { padding: 3rem 4rem; }
+    .navbar a { font-size: 16px; }
+    .contactCard { max-width: 460px; }
+}
